@@ -12,3 +12,20 @@ for i in range(Noofvisits):
     current_page = url
 #display current page
 print(f"current page :{current_page}")
+#go back
+while input('do you want to go back?(yes/no):').lower() == 'yes':
+    if not backward_history.empty():
+        forward_history.put(current_page)
+        current_page = backward_history.get()
+        print(f"going back to {current_page}")
+    else:
+        print("no previous page available")
+
+while input('do you want to go forward?(yes/ no):').lower() == 'yes':
+    if not forward_history.empty():
+        backward_history.put(current_page)
+        current_page = forward_history.get()
+        print(f"going forward to {current_page}")
+    else:
+        print("no forward page available")
+        
